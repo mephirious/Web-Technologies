@@ -1,0 +1,99 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+	font-family: 'Gilroy-Medium';
+	src: url('../fonts/gilroy-medium.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/gilroy-medium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/gilroy-medium.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/gilroy-medium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/gilroy-medium.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/gilroy-medium.svg#gilroy-medium') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Gilroy-Regular';
+	src: url('../fonts/gilroy-regular.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/gilroy-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/gilroy-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/gilroy-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/gilroy-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/gilroy-regular.svg#gilroy-regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+.headerOfMainPage {
+    font-family: 'Gilroy-Medium', sans-serif;
+    padding-bottom: 100px;
+}
+
+body {
+    color: #D8D9DA;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://kappa.lol/8lDxV');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+.headerOfMainPage h1 {
+    font-size: 100px;
+    text-align: center;
+    padding-top: 9.5%;
+}
+
+.headerOfMainPage ul{
+	font-family: 'Gilroy-Regular', sans-serif;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    font-size: 30px;
+}
+
+.headerOfMainPage a{
+    text-decoration: none;
+    color: #D8D9DA;
+}

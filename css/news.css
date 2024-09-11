@@ -1,0 +1,188 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+	font-family: 'Gilroy-Medium';
+	src: url('../fonts/gilroy-medium.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/gilroy-medium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/gilroy-medium.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/gilroy-medium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/gilroy-medium.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/gilroy-medium.svg#gilroy-medium') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Gilroy-Regular';
+	src: url('../fonts/gilroy-regular.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/gilroy-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/gilroy-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/gilroy-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/gilroy-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/gilroy-regular.svg#gilroy-regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+body {
+    background-color: #F8F9FA;
+    color: #343A40;
+    font-family: 'Gilroy Regular', sans-serif;
+}
+
+.headerNews {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+    align-items: center;
+    border-bottom: 1px solid #343A40;
+}
+
+.headerNews h1 {
+    font-family: 'Gilroy Medium', sans-serif;
+    font-size: 25px;
+    color: #343A40
+}
+
+.headerNews ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.headerNews a {
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 17.5px;
+    color: #343A40
+}
+
+.newsSection {
+    margin: 5%;
+}
+
+.newsSection h2 {
+    font-size: 100px;
+    font-family: 'Gilroy Medium', sans-serif;
+    padding-bottom: 9%;
+}
+
+.newsArticle {
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    margin-bottom: 7.5%;
+    margin-right: 5%;
+}
+
+.newsArticle h3 {
+    font-family: 'Gilroy Medium', sans-serif;
+    font-size: 30px;
+    margin-bottom: 2.5%;
+}
+
+.newsArticle img {
+    max-height: 400px;
+    max-width: 400px;
+}
+
+.newsText {
+    padding-left: 5%;
+    padding-top: 1%;
+}
+
+.newsText p{
+    padding-top: 1%;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+fieldset {
+    margin: 5%;
+    padding: 5%;
+    background-color: #E9ECEF;
+    text-align: start;
+    position: relative;
+}
+
+fieldset h2 {
+    font-family: 'Gilroy Medium', sans-serif;
+    transform: translateY(-30px);
+    font-size: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+form label {
+    font-family: 'Gilroy Regular', sans-serif;
+    font-size: 15px;
+    color: #343A40;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 15px;
+    color: #FFF;
+    background-color: #343A40;
+    border: none;
+    border-radius: 5px;
+}
+
+footer {
+    border-top: 1px solid #343A40;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;    
+}
+
+
+
+
+
