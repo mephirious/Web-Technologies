@@ -2,239 +2,237 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tempo</title>
+    <link rel="stylesheet" href="css/wikiAsapRocky.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-<link rel="stylesheet" href="css/wikiAsapRocky.css">
 <body>
-    <header class="headerWiki">
-        <h1>Tempo</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li>
-                    <a href="./charts.html">Charts</a>
-                </li>
-                <li>
-                    <a href="./news.html">News</a>
-                </li>
-            </ul>
+    <header class="menu">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">Tempo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./news.html">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./charts.html">Charts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-    </header>
+    </header>   
 
     <main>
-        <section class="wikiSection">
-            <h2>Wiki</h2>
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="display-2">WIKI</h2>
+                </div>
+            </div>
+        </div>
 
-            <article>
-                <div class="wikiAsap">
-                    <img src="https://www.rollingstone.com/wp-content/uploads/2023/07/Asap-Rocky-Riot-Single-Rihanna.jpg?w=1581&h=1054&crop=1" alt="Asap Rocky">
-
-                    <div class="bioAsap">
-                        <h3>A$AP Rocky</h3>
-                        <p>Rakim Athelaston Mayers (named after “The God MC” Rakim), better known by his stage name, A$AP Rocky, hails from Harlem, New York. He is no stranger to the cliché rap lifestyle, popularized by fellow Harlem Patriarchs, from Big L and Kool Moe Dee to Mase and Cam'ron.</p>
-                        <p>Rocky’s career began in 2007, when he joined the Harlem-based A$AP Mob, founded by A$AP Yams, A$AP Bari and A$AP Illz. Rocky was projected into fame in 2011 following the release of his debut mixtape LIVE.LOVE.A$AP, which featured hits like “Peso” and “Purple Swag,” and earned him a record deal with RCA Records.</p>
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="asapRockyCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#asapRockyCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#asapRockyCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#asapRockyCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://www.rollingstone.com/wp-content/uploads/2023/07/Asap-Rocky-Riot-Single-Rihanna.jpg?w=1581&h=1054&crop=1" class="d-block w-100 rounded" alt="Asap Rocky">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://urbjournal.com/wp-content/uploads/2021/06/asap-rocky.jpeg" class="d-block w-100 rounded" alt="Image 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2024%2F07%2F28%2Fasap-rocky-dont-be-dumb-listening-party-tyler-the-creator-collab-j-cole-drake-diss-preview-000.jpg?fit=max&cbr=1&q=90&w=750&h=500" class="d-block w-100 rounded" alt="Image 3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#asapRockyCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#asapRockyCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+                </div>                
+                <div class="col-lg-6 pt-3">
+                    <h3>A$AP Rocky</h3>
+                    <p>Rakim Athelaston Mayers (named after “The God MC” Rakim), better known by his stage name, A$AP Rocky, hails from Harlem, New York. He is no stranger to the cliché rap lifestyle, popularized by fellow Harlem Patriarchs, from Big L and Kool Moe Dee to Mase and Cam'ron.</p>
+                    <p>Rocky’s career began in 2007, when he joined the Harlem-based A$AP Mob, founded by A$AP Yams, A$AP Bari, and A$AP Illz. Rocky was projected into fame in 2011 following the release of his debut mixtape LIVE.LOVE.A$AP, which featured hits like “Peso” and “Purple Swag,” and earned him a record deal with RCA Records.</p>    
                 </div>
-                <div class="wikiAsap">
-                    <div class="bioAsapSong">
-                        <h3>The most popular song</h3>
-                        <p>“Praise The Lord” by A$AP Rocky and Skepta is all about celebrating success, flexing their accomplishments, and overcoming obstacles. The track is both a victory lap and a toast to making it despite life’s struggles. The recurring theme is confidence and determination, with Rocky and Skepta reflecting on their journeys to the top.</p>
-                        </div>  
-                        <video controls>
-                            <source src="https://kappa.lol/VgCdU" type="video/mp4">
-                            Your browser does not support the video element or the file was not found.
-                        </video>  
-                </div>
+            </div>
+        </div>
 
-                <div class="wikiAsap">
-                    <img src="https://navinyle.kz/assets/images/products/1826/r-4248602-1522937597-2585.jpg" alt="Asap Rocky's Album">
-                    <div class="bioAsap">
-                        <h3>The most popular album<br></h3>
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>The most popular song</h3>
+                    <p>“Praise The Lord” by A$AP Rocky and Skepta is all about celebrating success, flexing their accomplishments, and overcoming obstacles. The track is both a victory lap and a toast to making it despite life’s struggles. The recurring theme is confidence and determination, with Rocky and Skepta reflecting on their journeys to the top.</p>
+                </div>
+                <div class="col-lg-6 pt-3">
+                    <video controls class="img-fluid rounded w-100 mb-3">
+                        <source src="https://kappa.lol/VgCdU" type="video/mp4">
+                        Your browser does not support the video element or the file was not found.
+                    </video>  
+                </div>
+            </div>
+        </div>
+
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="album img-fluid rounded mb-3" src="https://cdns-images.dzcdn.net/images/cover/ca42a0630c1d60391ac44f3be6abcac0/0x1900-000000-80-0-0.jpg" alt="Asap Rocky's Album">    
+                </div>
+                <div class="col-lg-6 pt-3">
+                    <h3>The most popular album</h3>
                     <p>Long. Live. ASAP (stylized as LONG.LIVE.A$AP) is the debut studio album by American rapper ASAP Rocky. It was released on January 15, 2013, by ASAP Worldwide, Polo Grounds Music, and RCA Records. The album features guest appearances from Kendrick Lamar, Schoolboy Q, 2 Chainz, Drake, Big K.R.I.T., Santigold, Overdoz, Yelawolf, Florence Welch, Danny Brown, Action Bronson, Joey Badass, Gunplay, and ASAP Ferg. The album's production was handled by Rocky himself (under the pseudonym Lord Flacko), Hector Delgado, Hit-Boy, Clams Casino, Jim Jonsin, T-Minus, Danger Mouse, 40, Skrillex, and Emile Haynie, among other high-profile producers.</p>
-                    <p>The album was supported with four singles—"Goldie", "Fuckin' Problems", "Wild for the Night", and "Fashion Killa"—and Rocky's Long. Live. ASAP national tour with rappers Schoolboy Q and Danny Brown. It received generally positive reviews from critics, and charted at number one on the US Billboard 200. </p>
-                    <h5>The list of songs of album</h5>
-                    </div>
+                    <p>The album was supported with four singles—"Goldie", "Fuckin' Problems", "Wild for the Night", and "Fashion Killa"—and Rocky's Long. Live. ASAP national tour with rappers Schoolboy Q and Danny Brown. It received generally positive reviews from critics and charted at number one on the US Billboard 200.</p>
                 </div>
-                <h3 id="list">The list of songs from album</h3>
-                <ol>
-                    <li>
-                        <figure>
-                            <figcaption>Long Live A$AP</figcaption>
-                            <audio controls aria-label="Play Long Live A$AP">
-                                <source src="https://sndup.net/zz3dv/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Goldie</figcaption>
-                            <audio controls aria-label="Play Goldie">
-                                <source src="https://sndup.net/sbjy3/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>PMW (All I Really Need) (feat. ScHoolboy Q)</figcaption>
-                            <audio controls aria-label="Play PMW (All I Really Need)">
-                                <source src="https://sndup.net/qfmx7/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>LVL</figcaption>
-                            <audio controls aria-label="Play LVL">
-                                <source src="https://sndup.net/t5gg5/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Hell (feat. Santigold)</figcaption>
-                            <audio controls aria-label="Play Hell (feat. Santigold)">
-                                <source src="https://sndup.net/c4fgj/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Pain (feat. OverDoz.)</figcaption>
-                            <audio controls aria-label="Play Pain (feat. OverDoz.)">
-                                <source src="https://sndup.net/x5bf8/m" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>F**kin' Problems (feat. Drake, 2 Chainz & Kendrick Lamar)</figcaption>
-                            <audio controls aria-label="Play F**kin' Problems (feat. Drake, 2 Chainz & Kendrick Lamar)">
-                                <source src="https://sndup.net/xxkzr/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Wild for the Night (feat. Skrillex & Birdy Nam Nam)</figcaption>
-                            <audio controls aria-label="Play Wild for the Night (feat. Skrillex & Birdy Nam Nam)">
-                                <source src="https://sndup.net/m25w5/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>1Train (feat. Kendrick Lamar, Joey Bada$$)</figcaption>
-                            <audio controls aria-label="Play 1Train (feat. Kendrick Lamar, Joey Bada$$)">
-                                <source src="https://sndup.net/ht5tr/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Fashion Killa</figcaption>
-                            <audio controls aria-label="Play Fashion Killa">
-                                <source src="https://sndup.net/cgfqh/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Phoenix</figcaption>
-                            <audio controls aria-label="Play Phoenix">
-                                <source src="https://sndup.net/fz68b/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Suddenly</figcaption>
-                            <audio controls aria-label="Play Suddenly">
-                                <source src="https://sndup.net/d2wzj/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Jodye</figcaption>
-                            <audio controls aria-label="Play Jodye">
-                                <source src="https://sndup.net/hxxb7/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Ghetto Symphony (feat. Gunplay & A$AP Ferg)</figcaption>
-                            <audio controls aria-label="Play Ghetto Symphony (feat. Gunplay & A$AP Ferg)">
-                                <source src="https://sndup.net/scdnm/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Angels</figcaption>
-                            <audio controls aria-label="Play Angels">
-                                <source src="https://sndup.net/mcwvf/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>I Come Apart (feat. Florence Welch)</figcaption>
-                            <audio controls aria-label="Play I Come Apart (feat. Florence Welch)">
-                                <source src="https://sndup.net/zyqv3/m" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <figcaption>Purple Swag REMIX (feat. Bun B, Paul Wall & Killa Kyleon)</figcaption>
-                            <audio controls aria-label="Play Purple Swag REMIX (feat. Bun B, Paul Wall & Killa Kyleon)">
-                                <source src="https://sndup.net/snbm5/d" type="audio/mp3">
-                                Your browser does not support the audio element or the file was not found.
-                            </audio>
-                        </figure>
-                    </li>
-                </ol>
-            </article>
-        </section>
-        </main>
+            </div>
+        </div>
 
-        <fieldset>
-            <h2>Subscribe to E-Mail Newsletters and Alerts</h2>
-            <form method="post" action="#">
-                <label for="name">Input your name:</label><br>
-                <input type="text" id="name"><br>
-                <label for="preferences">Input your preferences:</label><br>
-                <input type="text" id="preferences"><br>
-                <label for="email">Input your e-mail:</label><br>
-                <input type="email" id="email"><br>
-                <button type="submit" aria-label="Confirm">Confirm</button>
-            </form>
-        </fieldset>
+        <div class="container">
+            <h3 id="list" class="text-center mb-4">The List of Songs from Album</h3>
+            <ol class="list-group-numbered">
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Long Live A$AP</figcaption>
+                        <audio controls aria-label="Play Long Live A$AP" class="w-100">
+                            <source src="https://sndup.net/zz3dv/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Goldie</figcaption>
+                        <audio controls aria-label="Play Goldie" class="w-100">
+                            <source src="https://sndup.net/sbjy3/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">PMW (All I Really Need) (feat. ScHoolboy Q)</figcaption>
+                        <audio controls aria-label="Play PMW (All I Really Need)" class="w-100">
+                            <source src="https://sndup.net/qfmx7/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">LVL</figcaption>
+                        <audio controls aria-label="Play LVL" class="w-100">
+                            <source src="https://sndup.net/t5gg5/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Hell (feat. Santigold)</figcaption>
+                        <audio controls aria-label="Play Hell (feat. Santigold)" class="w-100">
+                            <source src="https://sndup.net/c4fgj/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Pain (feat. OverDoz.)</figcaption>
+                        <audio controls aria-label="Play Pain (feat. OverDoz.)" class="w-100">
+                            <source src="https://sndup.net/x5bf8/m" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">F**kin' Problems (feat. Drake, 2 Chainz & Kendrick Lamar)</figcaption>
+                        <audio controls aria-label="Play F**kin' Problems" class="w-100">
+                            <source src="https://sndup.net/xxkzr/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Wild for the Night (feat. Skrillex)</figcaption>
+                        <audio controls aria-label="Play Wild for the Night" class="w-100">
+                            <source src="https://sndup.net/qbd5b/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Fashion Killa</figcaption>
+                        <audio controls aria-label="Play Fashion Killa" class="w-100">
+                            <source src="https://sndup.net/cfy9d/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">1 Train (feat. Big K.R.I.T., Joey Bada$$, Yelawolf, & Action Bronson)</figcaption>
+                        <audio controls aria-label="Play 1 Train" class="w-100">
+                            <source src="https://sndup.net/jvszj/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Let It F**k</figcaption>
+                        <audio controls aria-label="Play Let It F**k" class="w-100">
+                            <source src="https://sndup.net/qwmhp/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+                <li>
+                    <figure class="mb-2">
+                        <figcaption class="fw-bold">Bonus Track: The Blacker the Berry (feat. Schoolboy Q)</figcaption>
+                        <audio controls aria-label="Play The Blacker the Berry" class="w-100">
+                            <source src="https://sndup.net/f9fy6/d" type="audio/mp3">
+                            Your browser does not support the audio element or the file was not found.
+                        </audio>
+                    </figure>
+                </li>
+            </ol>
+        </div>
     </main>
 
-    <footer>
-            <p>Completed by student of Astana IT University Nursultan Nurgaliyev SE-2325.</p>
-            <p>© 2024 Tempo. All rights reserved.</p>
+    <footer class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <p>Completed by student of Astana IT University Nursultan Nurgaliyev SE-2325.</p>
+                </div>
+                <div class="col-12 col-md-6 text-md-end mb-3">
+                    <p>© 2024 Tempo. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>

@@ -2,92 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tempo</title>
+    <link rel="stylesheet" href="css/chart.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-<link rel="stylesheet" href="css/chart.css">
 <body>
-    <header class="headerChart">
-        <h1>Tempo</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li>
-                    <a href="./wikiAsapRocky.html">Wiki</a>
-                </li>
-                <li>
-                    <a href="./news.html">News</a>
-                </li>
-            </ul>
+    <header class="menu">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">Tempo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./news.html">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./wikiAsapRocky.html">Wiki</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
-
+    
     <main>
-        <section class="chartsSection">
-            <h2>CHARTS</h2>    
-                <ol>
-                    <li>
-                        <p>1. Despacito (Remix) - Luis Fonsi & Daddy Yankee</p>
-                        <p>23.7M</p>
-                    </li>
-                    <li>
-                        <p>2. Rap God - Eminem</p>
-                        <p>19.3M</p>
-                    </li>
-                    <li>
-                        <p>3. WAP - Cardi B</p>
-                        <p>16.6M</p>
-                    </li>
-                    <li>
-                        <p>4. Shape of You - Ed Sheeran</p>
-                        <p>15.2M</p>
-                    </li>
-                    <li>
-                        <p>5. Lose Yourslef - Eminem</p>
-                        <p>12.7M</p>
-                    </li>
-                    <li>
-                        <p>6. HUMBLE. - Kendrick Lamar</p>
-                        <p>11.8M</p>
-                    </li>
-                    <li>
-                        <p>7. The Hills - The Weeknd</p>
-                        <p>10.4M</p>
-                    </li>
-                    <li>
-                        <p>8. Bohemian Rhapsody - Queen</p>
-                        <p>10.2M</p>
-                    </li>
-                    <li>
-                        <p>9. euphoria - Kendrick Lamar</p>
-                        <p>9.9M</p>
-                    </li>
-                    <li>
-                        <p>10. SICKO MODE - Travis Scott</p>
-                        <p>9.8M</p>
-                    </li>
-                </ol>
-        </section>
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="display-2">CHARTS</h2>
+                </div>
+            </div>
+        </div>
 
-        <fieldset>
-            <h2>Subscribe to E-Mail Newsletters and Alerts</h2>
-            <form method="post" action="#">
-                <label for="name">Input your name:</label><br>
-                <input type="text" id="name"><br>
-                <label for="preferences">Input your preferences:</label><br>
-                <input type="text" id="preferences"><br>
-                <label for="email">Input your e-mail:</label><br>
-                <input type="email" id="email"><br>
-                <button type="submit" aria-label="Confirm">Confirm</button>
-            </form>
-        </fieldset>
+        <div class="container pb-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="https://www.officialcharts.com/sites/default/files/styles/charted_item_artwork_large/public/2024-06/Sabrina%20Carpenter%20Short%20N%20Sweet%20album%20Espresso%20Single.jpg?itok=bEcUeWyQ" class="card-img-top" alt="Chart 1">
+                        <div class="card-body">
+                            <h5 class="card-title">SHORT N' SWEET</h5>
+                            <p class="card-text">SABRINA CARPENTER</p>
+                            <p class="card-text">Short 'N' Sweet is the sixth studio album from Sabrina Carpenter.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/450x0/https%3A%2F%2Fimages.genius.com%2F512b5bc34892018969d9cf3953dde1c1.1000x1000x1.png" class="card-img-top" alt="Chart 2">
+                        <div class="card-body">
+                            <h5 class="card-title">MIXTAPE PLUTO</h5>
+                            <p class="card-text">Future</p>
+                            <p class="card-text">The name “Mixtape Pluto” was first officially confirmed by Southside in an interview</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/450x0/https%3A%2F%2Fimages.genius.com%2Fd14eb2fbe1ec4d82fae4823b606e1e0d.472x472x1.png" class="card-img-top" alt="Chart 3">
+                        <div class="card-body">
+                            <h5 class="card-title">The Vinyl LPs</h5>
+                            <p class="card-text">Eminem</p>
+                            <p class="card-text">The Vinyl LPs is a collection of every album by Eminem</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2Fd164c16b4496607534d96e90b75034c3.1000x1000x1.png" class="card-img-top" alt="Chart 4">
+                        <div class="card-body">
+                            <h5 class="card-title">LOCURA</h5>
+                            <p class="card-text">Lazza</p>
+                            <p class="card-text">LOCURA è stato presentato con uno speciale evento, chiamato LOCURA OPERA N.1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2Fb1eedb773d32cf71bc3c41a27d47ae93.901x901x1.png" class="card-img-top" alt="Chart 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Heavy Metal 2</h5>
+                            <p class="card-text">9mice & Kai Angel</p>
+                            <p class="card-text">Второй совместный альбом Кая и Майса и логическое продолжение HEAVY METAL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2Fb994c9e5ebb56c793d23b6d5954a935c.1000x1000x1.png" class="card-img-top" alt="Chart 6">
+                        <div class="card-body">
+                            <h5 class="card-title">FLUDDALITY</h5>
+                            <p class="card-text">GONE.Fludd</p>
+                            <p class="card-text">20 августа 2023 года артист поделился заблюренным треклистом</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2Fdd4c63502bd7b13db14dd90f45cb6456.540x540x1.jpg" class="card-img-top" alt="Chart 7">
+                        <div class="card-body">
+                            <h5 class="card-title">I AM MUSIC</h5>
+                            <p class="card-text">Playboi Carti</p>
+                            <p class="card-text">This tracklist is unconfirmed. It is compiled of recent singles, snippets</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/450x0/https%3A%2F%2Fimages.genius.com%2Fc10e1c7a9c9fe48901696cb99f73354b.999x999x1.png" class="card-img-top" alt="Chart 8">
+                        <div class="card-body">
+                            <h5 class="card-title">Brat</h5>
+                            <p class="card-text">Charli xcx</p>
+                            <p class="card-text">Brat and it’s completely different but it’s still also brat</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2F060181ac1b325992184cbe693e0318e1.1000x1000x1.png" class="card-img-top" alt="Chart 9">
+                        <div class="card-body">
+                            <h5 class="card-title">THE TORTURED POETS</h5>
+                            <p class="card-text">Taylor Swift</p>
+                            <p class="card-text">Is a double album serving as a reissue of her 11th album</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
     </main>
 
-    <footer>
-            <p>Completed by student of Astana IT University Nursultan Nurgaliyev SE-2325.</p>
-            <p>© 2024 Tempo. All rights reserved.</p>
+    <footer class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <p>Completed by student of Astana IT University Nursultan Nurgaliyev SE-2325.</p>
+                </div>
+                <div class="col-12 col-md-6 text-md-end mb-3">
+                    <p>© 2024 Tempo. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
