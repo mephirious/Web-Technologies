@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh; margin: 0;">
+    <div class="text-center">
+        <h1>Change Background Color</h1>
+        <button id="changeColorBtn" class="btn btn-primary mt-3">Change Color</button>
+        <a class="btn btn-dark mt-3" href="/index.html">Back</a>
+    </div>
+    
+    <div class="container text-center mt-4">
+        <h1 class="mb-4">Current Date and Time</h1>
+        <div id="dateTimeBlock" class="alert alert-primary" style="font-size: 24px;"></div>
+    </div>
+    
+    <script>
+        const button = document.getElementById("changeColorBtn");
+
+        button.addEventListener("click", () => {
+            var randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            document.body.style.backgroundColor = randomColor;
+        });
+
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric', 
+                second: 'numeric', 
+                hour12: true 
+            };
+
+            const formattedDateTime = now.toLocaleString('en-US', options);
+            document.getElementById('dateTimeBlock').textContent = formattedDateTime;
+        }
+
+        updateDateTime(); 
+        setInterval(updateDateTime, 1000); 
+    </script>
+</body>
+</html>
