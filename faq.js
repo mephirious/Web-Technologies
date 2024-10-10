@@ -1,13 +1,17 @@
-var accordionTitles = document.querySelectorAll(".accordion-title");
+function creator() {
+    var name = document.getElementById("creator");
+    if (name.style.display === "block") {
+        name.style.display = "none";
+    } else {
+        name.style.display = "block";
+    }
+}
 
-accordionTitles.forEach(title => {
-    title.addEventListener("click", () => {
-        var content = title.nextElementSibling;
-
-        if (content.style.display === "block") {
-            content.style.display = "none";
-        } else {
-            content.style.display = "block";
-        }
-    });
-});
+function rights() {
+    var rights = document.getElementById("rights");
+    if (rights.style.display === "block") {
+        rights.style.display = "none";
+    } else {
+        rights.style.display = "block";
+    }
+}

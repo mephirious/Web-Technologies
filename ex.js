@@ -1,15 +1,10 @@
-var emailInput = document.getElementById("email");
-var successMessage = document.getElementById("successMessage");
-var dangerMessage = document.getElementById("successMessage");
-var form = document.querySelector("form");
+function validation() {
+    var emailInput = document.getElementById("email").value;
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    
-    if (emailInput.checkValidity()) {
-        successMessage.style.display = "block";
+    if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailInput)) {
+        alert("Congratulations! Your answer has been sent")
     } else {
-        dangerMessage.style.display = "block";
+        alert("Invalid email address! Please, try again")
     }
-});
+}
 
