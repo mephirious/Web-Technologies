@@ -18,6 +18,13 @@
         url('../fonts/gilroy-regular.svg#gilroy-regular') format('svg'); 
 }
 
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
+}
+
 body {
     background-color: #F8F9FA;
     color: #343A40;

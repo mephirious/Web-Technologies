@@ -39,23 +39,29 @@
         </div>
 
         <div class="container px-sm-2">
-            <div class="row pb-5">
-                <div class="col-lg-6 mb-4">
+            <div class="row pb-5 mb-4">
+                <div class="col-lg-6">
                     <img src="https://www.rollingstone.com/wp-content/uploads/2024/09/linkin-park-new-member-1.jpg?w=1581&h=1054&crop=1" alt="Linkin Park" class="img-fluid rounded">
                 </div>
-                <div class="col-lg-6 pt-3 mt-lg-4">
+                <div class="col-lg-6">
                     <h3>Linkin Park Unveil Emily Armstrong as New Co-Vocalist, Announce 2024 World Tour and Album</h3>
                     <p>Linkin Park have announced their first studio album since the death of lead singer Chester Bennington. The follow-up to 2017’s One More Light is called From Zero, and it comes out November 15 via Warner. To mark the announcement, the band has shared a new single, ‘The Emptiness Machine’, which debuted alongside a livestream performance and arrives with a music video directed by Joe Hahn. Check it out and find the album’s cover art and tracklist.</p>
+                    <button id="more" onclick="ReadMore()" class="btn btn-dark">Read more...</button>
+                </div>
+                <div class="more mt-5" id="text">
+                    <p>The group — which is composed of Mike Shinoda, Brad Delson, Phoenix and Joe Hahn along with its two new members — will also embark on a six-date arena tour, hitting Los Angeles, New York, Hamburg, London, Seoul and Bogota. See the complete tour routing below.</p>
+                    <p>Linkin Park performed together for the first time in Los Angeles on Thursday for ticketed fans who were transported by buses to a studio lot. The event was livestreamed and will be available to view on Linkin Park’s official online channels for the next 24 hours.</p>
+                    <p>According to a press release, Shinoda, Delson, Farrell and Hahn “quietly began meeting up again in recent years” and “rather than ‘trying to restart the band,'” they worked with numerous musicians and “found a special kinship with Armstong and Brittain.”</p>
                 </div>
             </div>
         </div>
 
         <div class="container px-sm-2">
-            <div class="row pb-5">
-                <div class="col-lg-6 mb-4">
+            <div class="row pb-5 mb-4">
+                <div class="col-lg-6">
                     <img src="https://www.rollingstone.com/wp-content/uploads/2024/09/rich-homie-quan-obit.jpg?w=1581&h=1054&crop=1" alt="Rich Homie Quan" class="img-fluid rounded">
                 </div>
-                <div class="col-lg-6 pt-3 mt-lg-4">
+                <div class="col-lg-6">
                     <h3>Rich Homie Quan, Atlanta Rap Staple, Dead at 33</h3>
                     <p>Rich Homie Quan, who created Atlanta rap hits in the 2010s as a solo artist and member of Rich Gang, died Thursday at the age of 33. The Fulton County Medical Examiner and a family member confirmed his death to Rolling Stone, but a cause of death was not immediately available.</p>
                 </div>
@@ -63,11 +69,11 @@
         </div>
 
         <div class="container px-sm-2">
-            <div class="row pb-5">
-                <div class="col-lg-6 mb-4">
+            <div class="row pb-5 mb-4">
+                <div class="col-lg-6">
                     <img src="https://www.rollingstone.com/wp-content/uploads/2024/09/hot-boys.jpg?w=1581&h=1054&crop=1" alt="Lil Wayne" class="img-fluid rounded">
                 </div>
-                <div class="col-lg-6 pt-3 mt-lg-4">
+                <div class="col-lg-6">
                     <h3>Lil Wayne Will Reunite With the Hot Boys at Lil Weezyana Fest</h3>
                     <p>Lil Wayne is slated to reunite with his Hot Boys members at Lil’ WeezyAna Fest in partnership with Live Nation Urban, taking place in his hometown of New Orleans, LA on Nov. 2 at Smoothie King Center. The show, produced by Young Money, Dmani and Live Nation Urban, will see Wayne reunite with fellow Hot Boys members Juvenile, B.G. and Turk, with additional sets slated from Rob49 and Mannie Fresh. Subsequent artists will be announced in the coming weeks.</p>
                 </div>
@@ -91,7 +97,7 @@
                         <input type="email" id="email" class="form-control" required>
                     </div>
                     <button onclick="validation()" type="submit" class="btn btn-dark" aria-label="Confirm">Confirm</button>
-                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
                 </form>
             </fieldset>
         </div>
@@ -149,9 +155,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./ex.js"></script>
-    <script src="faq.js"></script>
-    <script src="./contact.js"></script>
+    <script src="./main.js"></script>
 
 </body>
 </html>

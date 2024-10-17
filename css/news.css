@@ -69,6 +69,15 @@ body {
     width: 100%;
 }
 
+.more {
+    background-color: #E9ECEF;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+}
+
 .container .row{
     display: flex;
     align-items: center;

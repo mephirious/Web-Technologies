@@ -10,6 +10,7 @@
     <div class="text-center">
         <h1>Change Background Color</h1>
         <button id="changeColorBtn" class="btn btn-primary mt-3">Change Color</button>
+        <button id="Greetings" onclick="displayGreeting()" class="btn btn-success mt-3">Greetings</button>
         <a class="btn btn-dark mt-3" href="./index.html">Back</a>
     </div>
     
@@ -18,31 +19,6 @@
         <div id="dateTimeBlock" class="alert alert-primary" style="font-size: 24px;"></div>
     </div>
     
-    <script>
-        var button = document.getElementById("changeColorBtn");
-
-        button.onclick = function() {
-            var randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-            document.body.style.backgroundColor = randomColor;
-        }
-
-        function updateDateTime() {
-            var now = new Date();
-            var options = { 
-                month: 'long', 
-                day: 'numeric', 
-                year: 'numeric', 
-                hour: 'numeric', 
-                minute: 'numeric', 
-                second: 'numeric'
-            };
-
-            var formattedDateTime = now.toLocaleString('en-US', options);
-            document.getElementById('dateTimeBlock').textContent = formattedDateTime;
-        }
-
-        updateDateTime(); 
-        setInterval(updateDateTime, 1000); 
-    </script>
+    <script src="./bonus.js"></script>
 </body>
 </html>
