@@ -88,7 +88,13 @@ footer .accordion-title {
     background-color: #E9ECEF;
 }
 
+.img-fluid {
+    transition: transform 0.3s ease; 
+}
 
+.img-fluid:hover {
+    transform: scale(1.1); 
+}
 
 
 

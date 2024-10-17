@@ -48,6 +48,14 @@ footer .accordion-title {
     font-family: 'Gilroy Medium', sans-serif;
 }
 
+.card {
+    transition: transform 0.3s ease; 
+}
+
+.card:hover {
+    transform: scale(1.1); 
+}
+
 .menu {
     border-bottom: 1px solid #343A40;
     font-family: 'Gilroy Medium', sans-serif;

@@ -69,6 +69,14 @@ body {
     width: 100%;
 }
 
+.img-fluid {
+    transition: transform 0.3s ease; 
+}
+
+.img-fluid:hover {
+    transform: scale(1.1); 
+}
+
 .more {
     background-color: #E9ECEF;
     max-width: 500px;
