@@ -44,6 +44,30 @@ function contact() {
     }
 }
 
+function setTheme(mode) {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(mode);
+
+    localStorage.setItem('theme', mode);
+
+    const toggleButton = document.getElementById('themeToggle');
+    toggleButton.textContent = mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+}
+
+function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+}
+
+window.onload = () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+};
+
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+
 function checker() {
     var email = document.getElementById("emails").value
 

@@ -28,10 +28,6 @@ body {
     color: #343A40;
 }
 
-footer .accordion-title {
-    background-color: #E9ECEF;
-}
-
 .h1 {
     font-size: 25px;
     text-decoration: none;
@@ -95,6 +91,29 @@ footer .accordion-title {
 .img-fluid:hover {
     transform: scale(1.1); 
 }
+
+
+body.light {
+    background-color: #F8F9FA;
+    color: #343A40; 
+}
+
+body.dark {
+    background-color: #343A40; 
+    color: #F8F9FA; 
+}
+
+.navbar.light {
+    background-color: #fff; 
+    color: #343A40; 
+}
+
+.navbar.dark {
+    background-color: #495057; 
+    color: #F8F9FA; 
+}
+
+
 
 
 
