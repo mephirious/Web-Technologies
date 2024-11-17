@@ -1,4 +1,42 @@
-// main.js
+document.getElementById('registerLink').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent the default link behavior
+    document.getElementById('popupRegistration').style.display = 'flex';
+});
+
+document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('popupRegistration').style.display = 'none';
+});
+
+// Optional: Close the pop-up if the user clicks outside the form
+document.getElementById('popupRegistration').addEventListener('click', function (e) {
+    if (e.target === this) {
+        this.style.display = 'none';
+    }
+});
+
+// Handle registration form submission
+document.getElementById('registerForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form from submitting normally
+    
+    // Example: Simulate a successful registration
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    // Check if the form fields are filled out
+    if (newUsername && newPassword) {
+        // Simulate successful registration (e.g., show a success message)
+        alert('Registration successful!');
+
+        // Close the registration pop-up
+        document.getElementById('popupRegistration').style.display = 'none';
+
+        // Optionally, you can clear the form fields
+        document.getElementById('registerForm').reset();
+    } else {
+        alert('Please fill out all fields.');
+    }
+});
+
 
 // Sample user data (for demonstration only)
 const users = JSON.parse(localStorage.getItem('users')) || {};
