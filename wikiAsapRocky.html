@@ -220,6 +220,26 @@
                 </li>
             </ol>
         </div>
+
+        <div class="more container pt-5">
+            <h2 class="mb-4 text-center">Lyrics Fetcher</h2>
+            <fieldset class="border p-4 rounded">
+                <form id="lyricsForm">
+                    <div class="mb-3">
+                        <label for="artist" class="form-label">Artist:</label>
+                        <input type="text" id="artist" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title:</label>
+                        <input type="text" id="title" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark" aria-label="Get Lyrics">Get Lyrics</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+                </form>
+                <div id="output" class="mt-4"></div>
+            </fieldset>
+        </div>
+
     </main>
 
      <footer class="pt-5 pb-4">

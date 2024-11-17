@@ -121,3 +121,36 @@ document.getElementById('playSoundButton').onclick = function() {
     sound.play(); 
 };
 
+// Select form and output elements
+const form = document.getElementById('lyricsForm');
+const output = document.getElementById('output');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault(); // Prevent the form from reloading the page
+
+  // Get the artist and title values
+  const artist = document.getElementById('artist').value.trim();
+  const title = document.getElementById('title').value.trim();
+
+  // Validate input
+  if (!artist || !title) {
+    output.innerHTML = '<span class="error">Please provide both artist and title.</span>';
+    return;
+  }
+
+  // Fetch lyrics from the Lyrics.ovh API
+  try {
+    const response = await fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`);
+    
+    if (response.ok) {
+      const data = await response.json();
+      output.textContent = data.lyrics; // Display the lyrics
+    } else if (response.status === 404) {
+      output.innerHTML = '<span class="error">No lyrics found.</span>';
+    } else {
+      output.innerHTML = '<span class="error">An error occurred. Please try again later.</span>';
+    }
+  } catch (error) {
+    output.innerHTML = '<span class="error">Failed to fetch lyrics. Please check your connection.</span>';
+  }
+});
