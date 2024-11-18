@@ -55,7 +55,7 @@ function login(event) {
     if (users[username] && users[username] === password) {
         localStorage.setItem('username', username);
         alert('Login successful!');
-        window.location.href = 'index.html'; // Redirect to home
+        window.location.href = 'login.html'; // Redirect to home
     } else {
         alert('Invalid username or password');
     }
