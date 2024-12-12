@@ -77,3 +77,19 @@ a {
     max-width: 400px;
     text-align: center;
 }
+
+.underweight,
+.normalweight,
+.overweight,
+.obesity {
+    display: none;
+    text-align: left;
+}
+
+.tip-category ul li {
+    margin-bottom: 8px;
+}
+
+.show {
+    display: block;
+}

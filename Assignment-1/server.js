@@ -60,6 +60,42 @@ app.post('/calculate', (req, res) => {
             <h1>BMI Calculator</h1>
             <div class="success">
                 <p>Your BMI: ${BMI} - ${result}</p>
+                <div class="tips">
+                    <div class="tip-category underweight ${result === 'Underweight' ? 'show' : ''}">
+                        <ul>
+                            <li>Increase Caloric Intake: Focus on nutrient-dense foods.</li>
+                            <li>Eat Frequent, Smaller Meals: Aim for 5-6 small meals a day.</li>
+                            <li>Exercise: Engage in strength training exercises to build muscle mass.</li>
+                            <li>Consult a Healthcare Provider: To rule out underlying health conditions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-category normalweight ${result === 'Normal weight' ? 'show' : ''}">
+                        <ul>
+                            <li>Maintain a Balanced Diet: Include a variety of healthy foods.</li>
+                            <li>Stay Active: Engage in regular physical activity.</li>
+                            <li>Monitor Weight Regularly: Prevent gradual weight gain.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-category overweight ${result === 'Overweight' ? 'show' : ''}">
+                        <ul>
+                            <li>Balanced Diet: Focus on reducing calorie intake with healthy foods.</li>
+                            <li>Increase Physical Activity: Aim for at least 150 minutes of exercise per week.</li>
+                            <li>Set Realistic Weight Loss Goals: Aim for gradual weight loss.</li>
+                            <li>Stay Hydrated: Drink water before meals to reduce calorie intake.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-category obesity ${result === 'Obesity' ? 'show' : ''}">
+                        <ul>
+                            <li>Consult a Healthcare Provider: Get a personalized weight loss plan.</li>
+                            <li>Create a Calorie Deficit: Reduce calorie intake and focus on whole foods.</li>
+                            <li>Increase Physical Activity: Incorporate cardiovascular and strength exercises.</li>
+                            <li>Focus on Portion Control: Avoid overeating by using smaller plates.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <a href="/">Go back</a> 
         </body>
