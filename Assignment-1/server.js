@@ -1,15 +1,20 @@
+// import express and body-parser
 const express = require('express'); 
 const bodyParser = require('body-parser'); 
 
+// init express aplication
 const app = express();
 
+// midleware to parse url-encoded data and serve static files from folder
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.static('public')); 
 
+// route for serving main page
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
 
+// route for bmi calculations
 app.post('/calculate', (req, res) => {
     const weight = parseFloat(req.body.weight);
     const height = parseFloat(req.body.height);
@@ -26,6 +31,7 @@ app.post('/calculate', (req, res) => {
         result = 'Obesity';
     }
 
+    // respond with an error page if input is invalid
     if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
         return res.send(`
             <!DOCTYPE html>
@@ -47,6 +53,7 @@ app.post('/calculate', (req, res) => {
         `);
     }
 
+    // respond with result and tips
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -103,6 +110,7 @@ app.post('/calculate', (req, res) => {
     `);
 });
 
+// start the server on port 8000
 const PORT = 8000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
