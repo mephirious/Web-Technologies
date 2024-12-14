@@ -42,7 +42,8 @@ Assignment-1/
    - Open a terminal and navigate to the project folder.
    - Run the following command to install dependencies:
      ```bash
-     npm install
+     npm init -y
+     npm install express body-parser
      ```
 
 3. **Run the Server:**
