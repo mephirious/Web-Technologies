@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 1</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Track Search</title>
+  <link rel="stylesheet" href="/styles.css"> 
 </head>
 <body>
-    <h1>BMI Calculator</h1>
-    <form action="/calculate" method="post">
-        <label for="weight">Enter your weight: </label>
-        <input type="text" id="weight" name="weight" placeholder="Example: 70" required>
-        <label for="height">Enter your height: </label>
-        <input type="text" id="height" placeholder="Example: 1.75" name="height" required>
-        <label for="gender">Select your gender: </label>
-        <select name="gender" id="gender" required>
-            <option value="" disabled selected></option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="female">Rather not say</option>
-        </select>
-        <label for="age">Enter your age: </label>
-        <input type="number" id="age" name="age" placeholder="Example: 18" required>
-        <button type="submit">Submit</button>
-    </form>
+
+  <h1>Search for a Song or Artist</h1>
+
+  <form id="searchForm">
+    <label for="query">Enter Song or Artist Name:</label>
+    <input type="text" id="query" name="query" required>
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      const query = document.getElementById('query').value; 
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = ''; 
+
+      fetch('/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query: query })
+      })
+      .then(response => response.json())  
+      .then(data => {
+        if (data.tracks.length === 0) {
+          resultsContainer.innerHTML = '<p>No results found.</p>';
+          return;
+        }
+
+        let resultHtml = '<h2>Results:</h2>';
+        data.tracks.forEach(track => {
+          resultHtml += `
+          <div class="result-item">
+          <div class="image-container">
+            ${track.imageUrl ? `<img src="${track.imageUrl}" alt="${track.name}">` : ''}
+          </div>
+          <div class="text">
+            <h3>${track.name}</h3>
+            <p>By: ${track.artists}</p>
+            <p>From the album: ${track.album}</p>
+            <p>Release Date: ${track.releaseDate}</p>
+            <a href="${track.link}" target="_blank" class="spotify-link">Listen on Spotify</a>
+          </div>
+        </div>
+          `;
+        });
+        resultsContainer.innerHTML = resultHtml;  
+      })
+      .catch(err => {
+        resultsContainer.innerHTML = '<p>Error fetching results. Please try again.</p>';
+        console.error('Error fetching data:', err);
+      });
+    });
+  </script>
+
 </body>
 </html>
