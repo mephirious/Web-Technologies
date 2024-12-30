@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 
 app.use(bodyParser.json()); 
-
 app.use(express.static('public'));
 
 const spotifyApi = new SpotifyWebApi({
@@ -32,17 +31,26 @@ app.get('/', (req, res) => {
 
 app.post('/search', async (req, res) => {
   const query = req.body.query;
+  const sortBy = req.body.sortBy || 'popularity';
 
   try {
     const data = await spotifyApi.searchTracks(query);
-    const tracks = data.body.tracks.items.map((track) => ({
+    let tracks = data.body.tracks.items.map((track) => ({
       name: track.name,
       artists: track.artists.map((artist) => artist.name).join(', '),
       album: track.album.name,
       link: track.external_urls.spotify,
-      imageUrl: track.album.images[0]?.url,  
+      imageUrl: track.album.images[0]?.url,
       releaseDate: track.album.release_date,
+      duration: track.duration_ms / 1000, 
+      previewUrl: track.preview_url
     }));
+
+    if (sortBy === 'releaseDate') {
+      tracks = tracks.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+    } else if (sortBy === 'popularity') {
+      tracks = tracks.sort((a, b) => b.popularity - a.popularity);
+    }
 
     res.json({ tracks: tracks });
   } catch (err) {
@@ -50,7 +58,6 @@ app.post('/search', async (req, res) => {
     res.status(500).json({ error: 'Error fetching data from Spotify' });
   }
 });
-
 
 const PORT = 3000;
 app.listen(PORT, () => {
