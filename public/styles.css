@@ -1,128 +1,142 @@
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #f3f4f6;
-  color: #333;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  color: #2c3e50;
-  margin-bottom: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+form label {
+    font-weight: bold;
 }
 
-input, select, button {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 14px;
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-button {
-  background-color: #3498db;
-  color: #fff;
-  font-weight: bold;
-  margin-top: 8px;
-  padding: 15px;
+form button {
+    padding: 10px 15px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #27ae60;
+}
+
+.filter-form, .sorting-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-form input, .sorting-form select, .sorting-form button {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-form button, .sorting-form button {
+    background-color: #3498db;
+}
+
+.filter-form button:hover, .sorting-form button:hover {
+    background-color: #2980b9;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+ul li strong {
+    flex-grow: 1; 
+    text-align: left;
+}
+
+ul li span {
+    margin-left: auto; 
+    text-align: right;
+}
+
+ul li .button-link,
+ul li form button {
+    margin-left: 10px; 
+}
+
+.button-link {
+    text-decoration: none;
+    padding: 3px ;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    background-color: #2980b9;
+}
+
+form[style="display: inline;"] button {
+    background-color: #e74c3c;
+}
+
+form[style="display: inline;"] button:hover {
+    background-color: #c0392b;
 }
 
 a {
-  background-color: #3498db;
-  color: #fff;
-  font-weight: bold;
-  margin-top: 8px;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
+    text-decoration: none;
+    color: #3498db;
+    margin: 5px;
 }
 
-#results {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+a:hover {
+    text-decoration: underline;
 }
-  
-#results-list {
-    list-style-type: none;
-    padding: 0;
-}
-  
-.result-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-  
-.result-item .image-container {
-    margin-right: 20px;
-}
-  
-.result-item img {
-    width: 100%;
-    max-width: 120px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-}
-  
-.result-item .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-  
-.result-item h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-}
-  
-.result-item p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-}
-  
-.result-item .spotify-link {
-    margin-top: 10px;
-    padding: 12px 15px; 
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    width: 130px;
-    transition: background-color 0.3s ease;
-}
-  
-.result-item .spotify-link:hover {
-    background-color: #2980b9;
-}
+

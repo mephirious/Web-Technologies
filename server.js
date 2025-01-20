@@ -1,65 +1,111 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const SpotifyWebApi = require('spotify-web-api-node');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
 const app = express();
 
-app.use(bodyParser.json()); 
-app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('public')); 
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENT_ID,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+mongoose.connect('mongodb://127.0.0.1:27017/assignment3', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    age: Number,
 });
 
-spotifyApi.clientCredentialsGrant().then(
-  (data) => {
-    spotifyApi.setAccessToken(data.body['access_token']);
-    console.log('Access token successfully retrieved.');
-  },
-  (err) => {
-    console.log('Error retrieving access token', err);
-  }
-);
+const User = mongoose.model('User', userSchema);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
-});
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
-app.post('/search', async (req, res) => {
-  const query = req.body.query;
-  const sortBy = req.body.sortBy || 'popularity';
+app.get('/', async (req, res) => {
+    try {
+        const { searchName, searchEmail, searchAge, sortBy = 'name', order = 'asc' } = req.query;
+        const query = {};
 
-  try {
-    const data = await spotifyApi.searchTracks(query);
-    let tracks = data.body.tracks.items.map((track) => ({
-      name: track.name,
-      artists: track.artists.map((artist) => artist.name).join(', '),
-      album: track.album.name,
-      link: track.external_urls.spotify,
-      imageUrl: track.album.images[0]?.url,
-      releaseDate: track.album.release_date,
-      duration: track.duration_ms / 1000, 
-      previewUrl: track.preview_url
-    }));
+        if (searchName) {
+            query.name = { $regex: searchName, $options: 'i' }; 
+        }
+        if (searchEmail) {
+            query.email = { $regex: searchEmail, $options: 'i' }; 
+        }
+        if (searchAge) {
+            query.age = searchAge;
+        }
 
-    if (sortBy === 'releaseDate') {
-      tracks = tracks.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
-    } else if (sortBy === 'popularity') {
-      tracks = tracks.sort((a, b) => b.popularity - a.popularity);
+        const sortOrder = order === 'asc' ? 1 : -1; 
+
+        const users = await User.find(query)
+            .sort({ [sortBy]: sortOrder }); 
+
+        res.render('index', {
+            users,
+            message: users.length ? '' : 'No users found.',
+            searchName,
+            searchEmail,
+            searchAge,
+            order,
+            sortBy,
+        });
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        res.status(500).send('Error loading home page');
     }
+});
 
-    res.json({ tracks: tracks });
-  } catch (err) {
-    console.log('Error fetching data from Spotify:', err);
-    res.status(500).json({ error: 'Error fetching data from Spotify' });
-  }
+app.get('/add', (req, res) => {
+    res.render('add');
+});
+
+app.post('/add', async (req, res) => {
+    try {
+        const { name, email, age } = req.body;
+        const newUser = new User({ name, email, age });
+        await newUser.save();
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error creating user:', err);
+        res.status(500).send('Error creating user');
+    }
+});
+
+app.get('/edit/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.render('edit', { user });
+    } catch (err) {
+        console.error('Error fetching user for editing:', err);
+        res.status(500).send('Error fetching user for editing');
+    }
+});
+
+app.post('/edit/:id', async (req, res) => {
+    try {
+        await User.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error updating user:', err);
+        res.status(500).send('Error updating user');
+    }
+});
+
+app.post('/delete/:id', async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        res.status(500).send('Error deleting user');
+    }
 });
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
