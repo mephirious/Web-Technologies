@@ -1,159 +1,114 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
+const speakeasy = require("speakeasy");
+const qrcode = require("qrcode");
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.error("MongoDB Connection Error:", err));
+
 const app = express();
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.static('public')); 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+}));
 
-mongoose.connect('mongodb://127.0.0.1:27017/assignment3', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Error connecting to MongoDB:', err));
+const User = mongoose.model("User", new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  twoFASecret: { type: String, default: null },
+  is2FAEnabled: { type: Boolean, default: false },
+}));
 
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    age: Number,
+app.get("/", (req, res) => res.redirect("/login"))
+
+app.get("/register", (req, res) => res.render("register"));
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  await new User({ username, password: hashedPassword }).save();
+  res.redirect("/login");
 });
 
-const User = mongoose.model('User', userSchema);
+app.get("/login", (req, res) => res.render("login"));
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
 
-app.set('view engine', 'ejs');
-app.set('views', './views');
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.send("Invalid credentials");
+  }
 
-app.get('/', async (req, res) => {
-    try {
-        const { searchName, searchEmail, searchAge, sortBy = 'name', order = 'asc' } = req.query;
-        const query = {};
+  req.session.userId = user._id;
 
-        if (searchName) {
-            query.name = { $regex: searchName, $options: 'i' }; 
-        }
-        if (searchEmail) {
-            query.email = { $regex: searchEmail, $options: 'i' }; 
-        }
-        if (searchAge) {
-            query.age = searchAge;
-        }
+  if (user.is2FAEnabled) {
+    return res.redirect("/verify-otp");
+  }
 
-        const sortOrder = order === 'asc' ? 1 : -1; 
-
-        const users = await User.find(query)
-            .sort({ [sortBy]: sortOrder }); 
-
-        res.render('index', {
-            users,
-            message: users.length ? '' : 'No users found.',
-            searchName,
-            searchEmail,
-            searchAge,
-            order,
-            sortBy,
-        });
-    } catch (err) {
-        console.error('Error fetching users:', err);
-        res.status(500).send('Error loading home page');
-    }
+  req.session.is2FAVerified = true;
+  res.redirect("/dashboard");
 });
 
-app.get('/add', (req, res) => {
-    res.render('add', { errors: [] });
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => res.redirect("/login"));
 });
 
-app.post('/add', async (req, res) => {
-    const { name, email, age } = req.body;
+app.get("/setup-2fa", async (req, res) => {
+  const user = await User.findById(req.session.userId);
+  if (!user) return res.redirect("/login");
 
-    const errors = [];
+  if (user.is2FAEnabled) return res.send("2FA already enabled!");
 
-    if (!name || name.length < 3 || name.length > 50) {
-        errors.push('Name must be between 3 and 50 characters.');
-    }
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        errors.push('Invalid email format.');
-    }
-    if (!age || isNaN(age) || age < 1 || age > 120) {
-        errors.push('Age must be a number between 1 and 120.');
-    }
+  const secret = speakeasy.generateSecret({ name: `MyApp (${user.username})` });
+  user.twoFASecret = secret.base32;
+  user.is2FAEnabled = true;
+  await user.save();
 
-    if (errors.length > 0) {
-        return res.status(400).render('add', {
-            errors,
-            name,
-            email,
-            age,
-        });
-    }
-
-    try {
-        const { name, email, age } = req.body;
-        const newUser = new User({ name, email, age });
-        await newUser.save();
-        res.redirect('/');
-    } catch (err) {
-        console.error('Error creating user:', err);
-        res.status(500).send('Error creating user');
-    }
+  qrcode.toDataURL(secret.otpauth_url, (err, qrCode) => {
+    res.render("setup-2fa", { qrCode });
+  });
 });
 
-app.get('/edit/:id', async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id);
-        res.render('add', { errors: [] });
-    } catch (err) {
-        console.error('Error fetching user for editing:', err);
-        res.status(500).send('Error fetching user for editing');
-    }
+app.get("/verify-otp", (req, res) => res.render("verify-otp"));
+app.post("/verify-otp", async (req, res) => {
+  const { otp } = req.body;
+  const user = await User.findById(req.session.userId);
+  if (!user) return res.redirect("/login");
+
+  const verified = speakeasy.totp.verify({
+    secret: user.twoFASecret,
+    encoding: "base32",
+    token: otp,
+    window: 1,
+  });
+
+  if (verified) {
+    req.session.is2FAVerified = true;
+    return res.redirect("/dashboard");
+  }
+
+  res.send("Invalid OTP");
 });
 
-app.post('/edit/:id', async (req, res) => {
-    const { name, email, age } = req.body;
-    const { id } = req.params;
-
-    const errors = [];
-
-    if (!name || name.length < 3 || name.length > 50) {
-        errors.push('Name must be between 3 and 50 characters.');
-    }
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        errors.push('Invalid email format.');
-    }
-    if (!age || isNaN(age) || age < 1 || age > 120) {
-        errors.push('Age must be a number between 1 and 120.');
+app.get("/dashboard", async (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect("/login");
     }
 
-    if (errors.length > 0) {
-        return res.status(400).render('edit', {
-            errors,
-            name,
-            email,
-            age,
-            userId: id,
-        });
+    const user = await User.findById(req.session.userId);
+    if (!user) {
+        return res.redirect("/login");
     }
 
-    try {
-        await User.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect('/');
-    } catch (err) {
-        console.error('Error updating user:', err);
-        res.status(500).send('Error updating user');
-    }
+    res.render("dashboard", { is2FAEnabled: user.is2FAEnabled });
 });
 
-app.post('/delete/:id', async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.params.id);
-        res.redirect('/');
-    } catch (err) {
-        console.error('Error deleting user:', err);
-        res.status(500).send('Error deleting user');
-    }
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));
