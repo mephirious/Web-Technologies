@@ -60,10 +60,33 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/add', (req, res) => {
-    res.render('add');
+    res.render('add', { errors: [] });
 });
 
 app.post('/add', async (req, res) => {
+    const { name, email, age } = req.body;
+
+    const errors = [];
+
+    if (!name || name.length < 3 || name.length > 50) {
+        errors.push('Name must be between 3 and 50 characters.');
+    }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        errors.push('Invalid email format.');
+    }
+    if (!age || isNaN(age) || age < 1 || age > 120) {
+        errors.push('Age must be a number between 1 and 120.');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).render('add', {
+            errors,
+            name,
+            email,
+            age,
+        });
+    }
+
     try {
         const { name, email, age } = req.body;
         const newUser = new User({ name, email, age });
@@ -78,7 +101,7 @@ app.post('/add', async (req, res) => {
 app.get('/edit/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        res.render('edit', { user });
+        res.render('add', { errors: [] });
     } catch (err) {
         console.error('Error fetching user for editing:', err);
         res.status(500).send('Error fetching user for editing');
@@ -86,6 +109,31 @@ app.get('/edit/:id', async (req, res) => {
 });
 
 app.post('/edit/:id', async (req, res) => {
+    const { name, email, age } = req.body;
+    const { id } = req.params;
+
+    const errors = [];
+
+    if (!name || name.length < 3 || name.length > 50) {
+        errors.push('Name must be between 3 and 50 characters.');
+    }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        errors.push('Invalid email format.');
+    }
+    if (!age || isNaN(age) || age < 1 || age > 120) {
+        errors.push('Age must be a number between 1 and 120.');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).render('edit', {
+            errors,
+            name,
+            email,
+            age,
+            userId: id,
+        });
+    }
+
     try {
         await User.findByIdAndUpdate(req.params.id, req.body);
         res.redirect('/');
